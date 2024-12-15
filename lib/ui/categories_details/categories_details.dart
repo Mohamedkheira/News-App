@@ -61,7 +61,11 @@ class _CategoriesDetailsTabState extends State<CategoriesDetailsTab> {
                     tabs: source
                         .map((source) => SourcesTabWidget(source: source,))
                         .toList()),
-                NewsListWidget(sourceName: source,),
+                Expanded(
+                    child: TabBarView(
+                        children: source.map((source) => NewsListWidget(source: source,)).toList(),
+                    ),
+                ),
               ],
             ),
           );
