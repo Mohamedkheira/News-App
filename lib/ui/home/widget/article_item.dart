@@ -5,37 +5,46 @@ import 'package:news/model/article_model.dart';
 import 'package:news/ui/detils_screen/details_screen.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-
 class ArticleItem extends StatelessWidget {
   final Article article;
-  const ArticleItem({super.key,required this.article});
+
+  const ArticleItem({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: InkWell(
-        onTap: () =>    Navigator.pushNamed(context, DetailsScreen.routeName,arguments: article),
+        onTap: () => Navigator.pushNamed(context, DetailsScreen.routeName,
+            arguments: article),
         child: Column(
+          spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage(imageUrl: article.urlToImage??"",
-           height: MediaQuery.of(context).size.height*.4,
-           width: double.infinity,
-           placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
-           errorWidget: (context, url, error) => const Center(child: Icon(Icons.error,size: 25,),),
-           imageBuilder: (context, imageProvider) => Container(
-             decoration: BoxDecoration(
-               borderRadius: BorderRadius.circular(10),
-               image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
-             ),
-           ),
+            CachedNetworkImage(
+              imageUrl: article.urlToImage ?? "",
+              height: MediaQuery.of(context).size.height * .4,
+              width: double.infinity,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Center(
+                child: Icon(
+                  Icons.error,
+                  size: 25,
+                ),
+              ),
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                ),
+              ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+
             Text(
-              article.source?.name??"",
+              article.source?.name ?? "",
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 10,
@@ -43,18 +52,25 @@ class ArticleItem extends StatelessWidget {
               ),
             ),
             Text(
-              article.title??"",
+              article.title ?? "",
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Text(timeago.format(DateTime.parse(article.publishedAt??"")),style: const TextStyle(
-              color: Color(0xff79828B),
-              fontSize: 10,
-              fontWeight: FontWeight.w400,
-            ),)
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                timeago.format(DateTime.parse(article.publishedAt ?? "")),
+                style: const TextStyle(
+                  color: Color(0xff79828B),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                ),
+
+              ),
+            )
           ],
         ),
       ),
