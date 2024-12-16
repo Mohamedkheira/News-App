@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news/model/NewsResponse/Article.dart';
+import 'package:news/data/model/NewsResponse/Article.dart';
 import 'package:news/ui/detils_screen/details_screen.dart';
 
 class NewsItem extends StatelessWidget {
-  Article article;
+  final Article article;
 
-  NewsItem({Key? key, required this.article}) : super(key: key);
+  const NewsItem({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {

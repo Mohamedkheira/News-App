@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news/model/NewsResponse/Article.dart';
-import 'package:news/model/article_model.dart';
+import 'package:news/data/model/NewsResponse/Article.dart';
 import 'package:news/ui/detils_screen/details_screen.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -17,6 +16,7 @@ class ArticleItem extends StatelessWidget {
       child: InkWell(
         onTap: () =>    Navigator.pushNamed(context, DetailsScreen.routeName,arguments: article),
         child: Column(
+          spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CachedNetworkImage(imageUrl: article.urlToImage??"",
@@ -30,9 +30,6 @@ class ArticleItem extends StatelessWidget {
                image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
              ),
            ),
-            ),
-            const SizedBox(
-              height: 10,
             ),
             Text(
               article.source?.name??"",
@@ -50,11 +47,14 @@ class ArticleItem extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Text(timeago.format(DateTime.parse(article.publishedAt??"")),style: const TextStyle(
-              color: Color(0xff79828B),
-              fontSize: 10,
-              fontWeight: FontWeight.w400,
-            ),)
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(timeago.format(DateTime.parse(article.publishedAt??"")),style: const TextStyle(
+                color: Color(0xff79828B),
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
+              ),),
+            )
           ],
         ),
       ),

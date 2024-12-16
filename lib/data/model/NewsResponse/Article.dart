@@ -1,6 +1,7 @@
-import 'package:news/model/sourceResponses/Source.dart';
 
 
+
+import 'package:news/data/model/sourceResponses/Source.dart';
 
 /// source : {"id":"wired","name":"Wired"}
 /// author : "Makena Kelly, Joel Khalili"

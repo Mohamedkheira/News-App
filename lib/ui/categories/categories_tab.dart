@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news/model/category_model.dart';
+import 'package:news/data/model/category_model.dart';
 import 'package:news/ui/categories/widget/categories_item.dart';
 
 class CategoriesTab extends StatelessWidget {
-  void Function(String) onCategoryClick;
-  CategoriesTab({super.key, required this.onCategoryClick});
+  final void Function(String) onCategoryClick;
+  const CategoriesTab({super.key, required this.onCategoryClick});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class CategoriesTab extends StatelessWidget {
               .of(context)
               .textTheme
               .headlineLarge,
+            maxLines: 2,
           ),
           const SizedBox(
             height: 20,

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:news/model/NewsResponse/NewsResponse.dart';
-import 'package:news/model/sourceResponses/SourcesResponce.dart';
+import 'package:news/data/model/NewsResponse/NewsResponse.dart';
+import 'package:news/data/model/sourceResponses/SourcesResponce.dart';
+
 
 class ApiManager{
   static const String baseUrl = "newsapi.org";
